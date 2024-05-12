@@ -402,7 +402,6 @@ const initData = async () => {
     // カレンダーデータ取得
     const getCalendarDate = await request('getCalendarDataBySheet')
     calendarData.value = getCalendarDate.data
-    console.log('calendarData.value :', calendarData.value)
     if (!getCalendarDate.call) {
       $toast.error(getCalendarDate.message)
       return false
@@ -425,7 +424,6 @@ const initData = async () => {
       }
     })
     initialEventsReady.value = true
-    console.log('first initialEvents.value :', initialEvents.value)
 
     // 1秒待機後にローディングを解除
     setTimeout(() => {
@@ -448,11 +446,6 @@ onMounted(async () => {
   // init処理
   await initData()
 })
-
-// const getNotionData = async () => {
-//   const response = await request('getNotionData')
-//   console.log('notion API response :', response)
-// }
 </script>
 
 <style scoped>

@@ -17,10 +17,7 @@ import FullCalendar from '@fullcalendar/vue3'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
-// import { request } from '../api/utils'
-// import { useToast } from 'vue-toast-notification'
 import { format, parseISO } from 'date-fns'
-// import { formatInTimeZone } from 'date-fns-tz'
 
 const props = defineProps({
   calendarList: {
@@ -29,19 +26,9 @@ const props = defineProps({
   }
 })
 
-// toast
-// const $toast = useToast()
-
 const calendarComponentRef = ref(null)
-// const eventGuid = ref(0)
 const currentEvents = ref([])
-console.log('props.calendarList :', props.calendarList)
 const initialEvents = ref(props.calendarList)
-console.log('second initialEvents :', initialEvents)
-// const state = reactive({
-//   calendarData: []
-// })
-// const timeZone = 'Asia/Tokyo' // 日本のタイムゾーンを指定
 
 const calendarOptions = computed(() => ({
   plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -66,32 +53,6 @@ const calendarOptions = computed(() => ({
     currentEvents.value = events
   }
 }))
-
-// onBeforeMount(async () => {
-//   // init処理
-//   const response = await request('getCalendarDataBySheet')
-//   state.calendarData = response.data
-//   if (!response.call) {
-//     $toast.error(response.message)
-//     return false
-//   }
-
-//   initialEvents.value = state.calendarData.map((item) => {
-//     const [startTime, endTime] = item.timeRange.split(' ~ ')
-//     const formattedTimeStart = `T${startTime}:00`
-//     const formattedTimeEnd = `T${endTime}:00`
-
-//     const [datePart] = item.date.split(' ')
-//     const formattedDate = formatInTimeZone(new Date(datePart), timeZone, 'yyyy-MM-dd')
-
-//     return {
-//       id: createEventId(),
-//       title: item.userName,
-//       start: formattedDate + formattedTimeStart,
-//       end: formattedDate + formattedTimeEnd
-//     }
-//   })
-// })
 
 watch(initialEvents, (newEvents) => {
   console.log('newEvents :', newEvents)
@@ -123,11 +84,6 @@ watch(initialEvents, (newEvents) => {
 //     clickInfo.event.remove()
 //   }
 // }
-
-// function createEventId() {
-//   return String(eventGuid.value++)
-// }
-
 function formatTime(date) {
   // Date オブジェクトであることを確認
   if (date instanceof Date) {

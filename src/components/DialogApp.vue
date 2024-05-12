@@ -20,7 +20,6 @@ const props = defineProps({
   }
 })
 
-console.log('props.dialog :', props.dialog)
 const showDialog = ref(props.dialog)
 const emitSubmit = ref(false)
 
