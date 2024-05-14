@@ -45,21 +45,21 @@ function scheduleGoogleMeeting(pl) {
             .uri
         : undefined)
 
-    const sendEmailFlg = ss.getRange('H2').getValue()
+    // const sendEmailFlg = ss.getRange('H2').getValue()
 
-    if (sendEmailFlg) {
-      // 主任Email（main_email)
-      const recipientEmail = ss.getRange('F2').getValue()
-      // メール送信
-      sendNotificationEmail(
-        recipientEmail,
-        eventTitle,
-        pl.userName,
-        pl.selectedMeetingDay,
-        pl.selectedMeetingTime,
-        meetingLink
-      )
-    }
+    // if (sendEmailFlg) {
+    //   // 主任Email（main_email)
+    //   const recipientEmail = ss.getRange('F2').getValue()
+    //   // メール送信
+    //   sendNotificationEmail(
+    //     recipientEmail,
+    //     eventTitle,
+    //     pl.userName,
+    //     pl.selectedMeetingDay,
+    //     pl.selectedMeetingTime,
+    //     meetingLink
+    //   )
+    // }
 
     return meetingLink
   } catch (e) {
