@@ -21,6 +21,8 @@ let INTERVIEW_URL =
 let DESCRIPTION =
   'お疲れさまです。' +
   '\n' +
+  NOW.y +
+  '年' +
   NOW.m +
   '月の主任ヒアリングの日程を決めたいと思います。' +
   '\n' +
