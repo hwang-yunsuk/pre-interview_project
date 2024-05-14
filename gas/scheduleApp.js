@@ -44,7 +44,23 @@ function scheduleGoogleMeeting(pl) {
         ? createdEvent.conferenceData.entryPoints.find((entry) => entry.entryPointType === 'video')
             .uri
         : undefined)
-    console.log(`Created Google Meeting with URL: ${meetingLink}`)
+
+    const sendEmailFlg = ss.getRange('H2').getValue()
+
+    if (sendEmailFlg) {
+      // 主任Email（main_email)
+      const recipientEmail = ss.getRange('F2').getValue()
+      // メール送信
+      sendNotificationEmail(
+        recipientEmail,
+        eventTitle,
+        pl.userName,
+        pl.selectedMeetingDay,
+        pl.selectedMeetingTime,
+        meetingLink
+      )
+    }
+
     return meetingLink
   } catch (e) {
     console.error('Error creating event with conference data:', e.toString())
@@ -89,4 +105,20 @@ function parseMeetingTime(day, timeRange) {
   }
 
   return [startTime, endTime]
+}
+
+function sendNotificationEmail(
+  recipientEmail,
+  title,
+  userName,
+  meetingDate,
+  meetingTime,
+  meetingLink
+) {
+  const subject = `【確認依頼】 ${title}`
+  const messageBody = `${userName}さんが予定を追加しました。\n\nTitle: ${title}\nMeeting Date: ${meetingDate}\nMeeting Time: ${meetingTime}\nJoin Meeting: ${meetingLink}`
+
+  GmailApp.sendEmail(recipientEmail, subject, messageBody, {
+    from: 'notice@gmail.com'
+  })
 }

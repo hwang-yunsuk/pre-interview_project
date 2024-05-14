@@ -162,7 +162,7 @@ function addToSpreadsheet(pl) {
     ['遅延有無', pl.deferredExistence],
     ['現場からの指摘有無', pl.pointingOut],
     ['稼働状況（稼働が高い場合はその理由等を確認）', pl.workingStatus],
-    ['コミュニケーションは問題なく取れているか', pl.comunication],
+    ['コミュニケーションは問題なく取れているか', pl.communication],
     ['現場で困っていることなどがあれば', pl.inTrouble],
     ['案件について'],
     ['今後やってみたい案件とその理由', pl.nextProject],
