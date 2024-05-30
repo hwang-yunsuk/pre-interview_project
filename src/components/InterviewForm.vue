@@ -395,7 +395,9 @@ const initData = async () => {
     userSelect.value = getUserNameList.data
     // ヒアリング日付リスト取得
     const getMeetingDays = await request('apiGetMeetingDays')
-    meetingDays.value = getMeetingDays.data
+    // 本日18時を過ぎたら除外する
+    const filteredMeetingDays = fetchAndFilterMeetingDays(getMeetingDays.data)
+    meetingDays.value = filteredMeetingDays
     // ヒアリング時間リスト取得
     const getMeetingTimes = await request('apiGetMeetingTimes')
     meetingTimes.value = getMeetingTimes.data
@@ -436,6 +438,25 @@ const initData = async () => {
       loading.value = false
     }, 1000)
   }
+}
+
+// 今日の時点で18時を過ぎたら除外する
+const fetchAndFilterMeetingDays = (meetingDays) => {
+  // 本日の日付を取得し、18時のタイムスタンプを生成
+  const today = new Date()
+  const cutoff = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 18, 0, 0)
+
+  // 日付リストをフィルタリングして、今日の18時以降の日付のみを保持
+  const filteredDays = meetingDays.filter((day) => {
+    // 日付文字列から曜日を除去 (括弧と中の内容を削除)
+    const dateStr = day.replace(/\s*\(.\)$/, '')
+    const date = new Date(dateStr)
+
+    // 日付が今日の18時以降であるかを判定
+    return date > cutoff
+  })
+
+  return filteredDays
 }
 
 function createEventId() {

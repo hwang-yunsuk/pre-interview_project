@@ -88,6 +88,8 @@ function registerDataSheet(payload) {
     // googleカレンダーにスケジュール登録
     const meetingUrl = scheduleGoogleMeeting(pl)
 
+    schedulePostsToSlack(pl, meetingUrl)
+
     let newRow = []
     // meetingUrlが存在すれば追加
     if (meetingUrl) {
