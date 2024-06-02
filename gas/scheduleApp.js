@@ -4,11 +4,7 @@
 function scheduleGoogleMeeting(pl) {
   const ss = SpreadsheetApp.openById(SHEET_ID).getSheetByName('config')
   const calendarId = getCalendarId('rapide-act')
-  const googleMeetingFlag = ss.getRange('E2').getValue().toLowerCase()
-
-  if (googleMeetingFlag === 'no') {
-    return
-  }
+  const googleMeetingFlag = ss.getRange('F2').getValue().toLowerCase()
 
   // const email = ss.getRange('F2').getValue()
   const eventTitle = pl.userName + ' ヒアリングミーティング'
@@ -38,6 +34,11 @@ function scheduleGoogleMeeting(pl) {
       conferenceDataVersion: 1,
       sendNotifications: true
     })
+
+    if (googleMeetingFlag === 'no') {
+      return
+    }
+
     const meetingLink =
       createdEvent.hangoutLink ||
       (createdEvent.conferenceData && createdEvent.conferenceData.entryPoints
@@ -116,8 +117,7 @@ function sendNotificationEmail(
   meetingLink
 ) {
   const subject = `【確認依頼】 ${title}`
-  const messageBody = `${userName}さんが予定を追加しました。\n\nTitle: ${title}\nMeeting Date: ${meetingDate}\nMeeting Time: ${meetingTime}\nJoin Meeting: ${meetingLink}`
-
+  const messageBody = `${userName}さんが予定を追加しました。\n\nTitle: ${title}\nMeeting Date: ${meetingDate}\nMeeting Time: ${meetingTime}\nJoin Meeting: Teams → メール転送予定。`
   GmailApp.sendEmail(recipientEmail, subject, messageBody, {
     from: 'notice@gmail.com'
   })

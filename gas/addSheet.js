@@ -18,7 +18,7 @@ function scheduleToSpreadsheet() {
   // configシート
   const configSheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName('config')
   // metting_times列から最後の列まであるデータを取得
-  const range = configSheet.getRange('B2:B' + configSheet.getLastRow()).getValues()
+  const range = configSheet.getRange('C2:C' + configSheet.getLastRow()).getValues()
   // 二次元配列を一次元配列に変換
   const timeRanges = range.filter((row) => row[0] !== '').map((row) => row[0])
 
@@ -31,7 +31,7 @@ function scheduleToSpreadsheet() {
   const month = NOW.n.getMonth()
 
   // post_dateの値を取得
-  const postDate = configSheet.getRange('D2').getValues()[0][0]
+  const postDate = configSheet.getRange('E2').getValues()[0][0]
 
   // ヒアリングの基準日を取得
   var baseDate = null

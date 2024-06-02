@@ -18,7 +18,7 @@ function setTrigger() {
     // configシートのpost_date確認
     const configSheet = SpreadsheetApp.getActive().getSheetByName('config')
     // post_dateの値を取得
-    const postDate = configSheet.getRange('D2').getValues()[0][0]
+    const postDate = configSheet.getRange('E2').getValues()[0][0]
 
     var newTriggerAt = null
     if (postDate) {
