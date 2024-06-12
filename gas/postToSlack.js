@@ -16,11 +16,11 @@ function schedulePostsToSlack(pl, meetingUrl) {
   const configSheet = SpreadsheetApp.openById(SHEET_ID).getSheetByName('config')
 
   // ユーザー名と一致する行を取得
-  const userNameColumn = configSheet.getRange('A:A').getValues()
+  const userNameColumn = configSheet.getRange('A2:A' + configSheet.getLastRow()).getValues()
   const channelId = []
   let memberId = null
-  for (let i = 0; i < userNameColumn.length; i++) {
-    if (userNameColumn[i][0] === pl.userName) {
+  for (let i = 1; i < userNameColumn.length; i++) {
+    if (userNameColumn[i - 1][0] === pl.userName) {
       memberId = configSheet.getRange(i + 1, 2).getValue() // B列の値を取得 (1-indexed)
       break
     }

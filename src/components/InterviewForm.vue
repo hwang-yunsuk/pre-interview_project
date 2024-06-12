@@ -79,7 +79,7 @@
             <v-radio label="ない" value="ない"></v-radio>
           </div>
         </v-radio-group>
-        <div class="sub-title">現場からの指摘有無 <span class="required-mark">※</span></div>
+        <!-- <div class="sub-title">現場からの指摘有無 <span class="required-mark">※</span></div>
         <v-col cols="7">
           <v-textarea
             v-model="pointingOut"
@@ -87,8 +87,8 @@
             :rules="inputRules.pointingOut"
             required
           ></v-textarea>
-        </v-col>
-        <div class="sub-title">稼働状況（現時点）<span class="required-mark">※</span></div>
+        </v-col> -->
+        <!-- <div class="sub-title">稼働状況（現時点）<span class="required-mark">※</span></div>
         <v-col cols="7">
           <v-text-field
             v-model="workingStatus"
@@ -96,7 +96,7 @@
             :rules="inputRules.workingStatus"
             required
           ></v-text-field>
-        </v-col>
+        </v-col> -->
         <div class="sub-title">
           コミュニケーションは問題なく取れているか <span class="required-mark">※</span>
         </div>
@@ -108,7 +108,7 @@
             required
           ></v-textarea>
         </v-col>
-        <div class="sub-title">
+        <!-- <div class="sub-title">
           現場で困っていることなどがあれば <span class="required-mark">※</span>
         </div>
         <v-col cols="7">
@@ -118,7 +118,7 @@
             :rules="inputRules.inTrouble"
             required
           ></v-textarea>
-        </v-col>
+        </v-col> -->
         <div class="sub-title">
           今後やってみたい案件とその理由 <span class="required-mark">※</span>
         </div>
@@ -237,10 +237,10 @@ const month = ref(new Date().getMonth() + 1)
 const projectName = ref('')
 const workDetail = ref('')
 const deferredExistence = ref('')
-const pointingOut = ref('')
-const workingStatus = ref('')
+// const pointingOut = ref('')
+// const workingStatus = ref('')
 const communication = ref('')
-const inTrouble = ref('')
+// const inTrouble = ref('')
 const nextProject = ref('')
 const initiatives = ref('')
 const opinion = ref('')
@@ -273,10 +273,10 @@ const inputRules = reactive({
   projectName: [requiredRule],
   workDetail: [requiredRule],
   deferredExistence: [requiredRule],
-  pointingOut: [requiredRule],
-  workingStatus: [requiredRule],
+  // pointingOut: [requiredRule],
+  // workingStatus: [requiredRule],
   communication: [requiredRule],
-  inTrouble: [requiredRule],
+  // inTrouble: [requiredRule],
   nextProject: [requiredRule],
   initiatives: [requiredRule],
   opinion: [requiredRule],
@@ -327,10 +327,10 @@ const handleSubmit = async () => {
     projectName: projectName.value,
     workDetail: workDetail.value,
     deferredExistence: deferredExistence.value,
-    pointingOut: pointingOut.value,
-    workingStatus: workingStatus.value,
+    // pointingOut: pointingOut.value,
+    // workingStatus: workingStatus.value,
     communication: communication.value,
-    inTrouble: inTrouble.value,
+    // inTrouble: inTrouble.value,
     nextProject: nextProject.value,
     initiatives: initiatives.value,
     opinion: opinion.value
@@ -369,10 +369,10 @@ const clearItem = async () => {
   projectName.value = ''
   workDetail.value = ''
   deferredExistence.value = ''
-  pointingOut.value = ''
-  workingStatus.value = ''
+  // pointingOut.value = ''
+  // workingStatus.value = ''
   communication.value = ''
-  inTrouble.value = ''
+  // inTrouble.value = ''
   nextProject.value = ''
   initiatives.value = ''
   opinion.value = ''
