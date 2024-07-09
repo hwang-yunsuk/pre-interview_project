@@ -104,6 +104,8 @@ function registerDataSheet(payload) {
         pl.projectName,
         pl.workDetail,
         pl.deferredExistence,
+        pl.target,
+        pl.currentState,
         pl.communication,
         pl.nextProject,
         pl.initiatives,
@@ -122,6 +124,8 @@ function registerDataSheet(payload) {
         pl.projectName,
         pl.workDetail,
         pl.deferredExistence,
+        pl.target,
+        pl.currentState,
         pl.communication,
         pl.nextProject,
         pl.initiatives,
@@ -166,7 +170,9 @@ function addToSpreadsheet(pl) {
     ['自身で現在取り組んでいること', pl.initiatives],
     ['会社に対する意見・要望', pl.opinion],
     ['その他、何かあれば'],
-    ['こちらから連携することがあれば伝える']
+    ['こちらから連携することがあれば伝える'],
+    ['今季の目標内容', pl.target],
+    ['現在の状態', pl.currentRow]
   ]
 
   // データをシートに書き込む

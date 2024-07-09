@@ -133,6 +133,32 @@
       </v-card>
       <v-card class="mb-4">
         <v-card-title>
+          <h4>個人の目標について(なければ無し)</h4>
+        </v-card-title>
+        <v-col cols="12">
+          <v-divider class="border-opacity-25"></v-divider>
+        </v-col>
+        <div class="sub-title">今季の目標内容 <span class="required-mark">※</span></div>
+        <v-col cols="7">
+          <v-textarea
+            v-model="target"
+            label="内容"
+            :rules="inputRules.target"
+            required
+          ></v-textarea>
+        </v-col>
+        <div class="sub-title">現在の状態 <span class="required-mark">※</span></div>
+        <v-col cols="7">
+          <v-textarea
+            v-model="currentState"
+            label="内容"
+            :rules="inputRules.currentState"
+            required
+          ></v-textarea>
+        </v-col>
+      </v-card>
+      <v-card class="mb-4">
+        <v-card-title>
           <h4>その他、意見や要望</h4>
         </v-card-title>
         <v-col cols="12">
@@ -237,8 +263,8 @@ const month = ref(new Date().getMonth() + 1)
 const projectName = ref('')
 const workDetail = ref('')
 const deferredExistence = ref('')
-// const pointingOut = ref('')
-// const workingStatus = ref('')
+const target = ref('')
+const currentState = ref('')
 const communication = ref('')
 // const inTrouble = ref('')
 const nextProject = ref('')
@@ -273,8 +299,8 @@ const inputRules = reactive({
   projectName: [requiredRule],
   workDetail: [requiredRule],
   deferredExistence: [requiredRule],
-  // pointingOut: [requiredRule],
-  // workingStatus: [requiredRule],
+  target: [requiredRule],
+  currentState: [requiredRule],
   communication: [requiredRule],
   // inTrouble: [requiredRule],
   nextProject: [requiredRule],
@@ -327,8 +353,8 @@ const handleSubmit = async () => {
     projectName: projectName.value,
     workDetail: workDetail.value,
     deferredExistence: deferredExistence.value,
-    // pointingOut: pointingOut.value,
-    // workingStatus: workingStatus.value,
+    target: target.value,
+    currentState: currentState.value,
     communication: communication.value,
     // inTrouble: inTrouble.value,
     nextProject: nextProject.value,
@@ -369,8 +395,8 @@ const clearItem = async () => {
   projectName.value = ''
   workDetail.value = ''
   deferredExistence.value = ''
-  // pointingOut.value = ''
-  // workingStatus.value = ''
+  target.value = ''
+  currentState.value = ''
   communication.value = ''
   // inTrouble.value = ''
   nextProject.value = ''
